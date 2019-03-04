@@ -13,11 +13,12 @@ var synth = new Tone.Synth({
 	},
 	"envelope" : {
 		"attack" : 0.02,
-		"decay" : 20,
-		"sustain" : 20,
+		"decay" : .6,
+		"sustain" : .3,
 		"release" : .6,
 	}
 }).toMaster();
+
 
 const Keyboard = props => (
   <div className="container" style={{ width: "100%", height: "auto", margin: 0, padding: "0" }}>
@@ -26,7 +27,6 @@ const Keyboard = props => (
       activeNotes={
         props.isPlaying ? props.currentSong[props.activeNotesIndex] : null
       }
-      // activeNotes={props.currentSong[props.activeNotesIndex]}
       playNote={midiNumber => {
         var x = Tone.Frequency(midiNumber, "midi").toNote();
         synth.triggerAttackRelease(x, "16n");
@@ -36,7 +36,6 @@ const Keyboard = props => (
         props.scorekeeper(midiNumber);
       }}
       stopNote={midiNumber => {
-        synth.triggerRelease();
       }}
       width={props.width}
     />

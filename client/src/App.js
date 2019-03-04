@@ -101,7 +101,7 @@ class App extends Component {
           });
         }
         
-        }, 500);
+        }, 250);
      } 
     }
   }
